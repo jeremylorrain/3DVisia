@@ -160,88 +160,24 @@
       <div class="gallery" id="gallery"></div>
     </section>
 
-      <!-- Contact -->
+    <!-- Contact -->
     <section id="contact" class="section container">
       <h2>Contact</h2>
-      <div class="contact-card card" style="padding:18px">
-        <div>
-          <p class="muted" style="margin-top:0">Dites-m'en plus sur votre projet et recevez une démo gratuite sous 24h.</p>
-          <!-- Formulaire mailto (pas de backend nécessaire). Vous pouvez remplacer l'adresse ci-dessous. -->
-          <form id="contact-form" action="https://formsubmit.co/ajax/jeremylorrain45@yahoo.fr" method="POST">
-            <!-- Remplacez EMAIL@EXEMPLE.COM par votre adresse de réception -->
-            <input type="hidden" name="_subject" value="Nouveau message — 3DVisia" />
-            <input type="hidden" name="_template" value="table" />
-            <input type="hidden" name="_captcha" value="false" />
-
-            <input name="Nom" placeholder="Nom / Société" required>
-            <input type="email" name="Email" placeholder="Email" required>
-            <input name="Téléphone" placeholder="Téléphone (optionnel)">
-            <textarea name="Message" placeholder="Parlez-moi de votre projet (type de bien, surface, délai)"></textarea>
-            <button class="btn" type="submit">Envoyer</button>
-            <div id="form-status" class="small" role="status" aria-live="polite"></div>
-            <div class="small">Ou écrivez-moi sur WhatsApp : <a href="https://wa.me/+33659915829" target="_blank" rel="noopener">+33 6 59 91 58 29</a></div>
-          </form>
-        </div>
-        <div class="card" style="padding:16px">
-          <h3 style="margin-top:0">Infos</h3>
-          <div class="small">Basé au Monténégro — projets internationaux (FR/EN)</div>
-          <div class="small">Livraison 48–72h selon complexité</div>
-          <div class="small">Formats : MP4, WebM, images HD, 360°</div>
-        </div>
+      <div class="card" style="padding:18px;max-width:720px">
+        <form id="contact-form" action="https://formsubmit.co/ajax/jeremylorrain45@yahoo.com" method="POST">
+          <input type="hidden" name="_subject" value="Nouveau message — 3DVisia" />
+          <input type="hidden" name="_template" value="table" />
+          <input type="hidden" name="_captcha" value="false" />
+          <input name="Nom" placeholder="Nom / Société" required>
+          <input type="email" name="Email" placeholder="Email" required>
+          <input name="Téléphone" placeholder="Téléphone (optionnel)">
+          <textarea name="Message" placeholder="Parlez-moi de votre projet (type de bien, surface, délai)"></textarea>
+          <button class="btn" type="submit">Envoyer</button>
+          <div id="form-status" class="small" role="status" aria-live="polite"></div>
+        </form>
       </div>
     </section>
   </main>
-
-  <footer>
-    <div class="container" style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap">
-      <div>© <span id="y"></span> 3DVisia — Création 3D Immobilière Immersive</div>
-      <div class="small">Fait avec ❤ au Monténégro</div>
-    </div>
-  </footer>
-
-  <script>
-    // Année automatique
-    document.getElementById('y').textContent = new Date().getFullYear();
- <!doctype html>
-<html lang="fr">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>3DVisia — Création 3D Immobilière Immersive</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    body { font-family: 'Inter', sans-serif; background: #0c0f14; color: #dfe6f3; margin: 0; }
-    .btn { padding: 10px 18px; background: linear-gradient(135deg,#3aa8ff,#6ee7ff); color: #00131f; border: none; border-radius: 999px; font-weight: 700; cursor: pointer; }
-    input, textarea { width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 6px; border: 1px solid rgba(255,255,255,.1); background: #0e1420; color: #fff; }
-    #form-status { margin-top: 10px; font-size: 14px; }
-  </style>
-</head>
-<body>
-  <section id="contact" style="padding:40px; max-width:600px; margin:auto;">
-    <h2>Contact</h2>
-    <form id="contact-form" action="https://formsubmit.co/ajax/jeremylorrain45@yahoo.fr" method="POST">
-      <input type="hidden" name="_subject" value="Nouveau message — 3DVisia" />
-      <input type="hidden" name="_template" value="table" />
-      <input type="hidden" name="_captcha" value="false" />
-      <input name="Nom" placeholder="Nom / Société" required>
-      <input type="email" name="Email" placeholder="Email" required>
-      <input name="Téléphone" placeholder="Téléphone (optionnel)">
-      <textarea name="Message" placeholder="Parlez-moi de votre projet"></textarea>
-      <button class="btn" type="submit">Envoyer</button>
-      <div id="form-status" role="status" aria-live="polite"></div>
-    </form>
-  </section>
-
-    // Défilement doux pour les ancres
-    document.querySelectorAll('a[href^="#"]').forEach(a=>{
-      a.addEventListener('click', e=>{
-        const id = a.getAttribute('href').slice(1);
-        const el = document.getElementById(id);
-        if(el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth', block:'start'}); }
-      })
-    })
 
   <!-- Modal Video Player -->
   <div class="modal" id="videoModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
