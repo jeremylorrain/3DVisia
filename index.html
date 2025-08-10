@@ -160,24 +160,73 @@
       <div class="gallery" id="gallery"></div>
     </section>
 
-    <!-- Contact -->
-    <section id="contact" class="section container">
+    <!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>3DVisia — Création 3D Immobilière Immersive</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  body { font-family:'Inter',sans-serif; background:#0c0f14; color:#dfe6f3; margin:0; }
+  .section { padding:52px 0; }
+  .card { background:linear-gradient(180deg,#11161f,#141a25); border-radius:18px; border:1px solid rgba(255,255,255,.06); box-shadow:0 10px 30px rgba(0,0,0,.4); }
+  input, textarea { width:100%; padding:10px; margin-bottom:12px; border-radius:10px; border:1px solid rgba(255,255,255,.15); background:#0e1420; color:#fff; font-size:14px; }
+  textarea { min-height:90px; resize:vertical; }
+  form { display:flex; flex-direction:column; gap:10px; }
+  button.btn { align-self:flex-start; padding:10px 20px; border:none; border-radius:999px; background:linear-gradient(135deg,#3aa8ff,#6ee7ff); color:#00131f; font-weight:700; cursor:pointer; }
+  #form-status { font-size:13px; color:#99a7bd; margin-top:4px; }
+</style>
+</head>
+<body>
+  <section id="contact" class="section">
+    <div class="container" style="max-width:720px; margin:auto;">
       <h2>Contact</h2>
-      <div class="card" style="padding:18px;max-width:720px">
+      <div class="card" style="padding:20px;">
         <form id="contact-form" action="https://formsubmit.co/ajax/jeremylorrain45@yahoo.com" method="POST">
-          <input type="hidden" name="_subject" value="Nouveau message — 3DVisia" />
-          <input type="hidden" name="_template" value="table" />
-          <input type="hidden" name="_captcha" value="false" />
+          <input type="hidden" name="_subject" value="Nouveau message — 3DVisia">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
           <input name="Nom" placeholder="Nom / Société" required>
           <input type="email" name="Email" placeholder="Email" required>
           <input name="Téléphone" placeholder="Téléphone (optionnel)">
           <textarea name="Message" placeholder="Parlez-moi de votre projet (type de bien, surface, délai)"></textarea>
           <button class="btn" type="submit">Envoyer</button>
-          <div id="form-status" class="small" role="status" aria-live="polite"></div>
+          <div id="form-status" role="status" aria-live="polite"></div>
         </form>
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
+
+<script>
+(() => {
+  const form = document.getElementById('contact-form');
+  const status = document.getElementById('form-status');
+  if(form){
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      status.textContent = 'Envoi en cours…';
+      const data = new FormData(form);
+      try {
+        const res = await fetch(form.action, { method:'POST', body:data, headers:{ 'Accept':'application/json' } });
+        if(res.ok){
+          form.reset();
+          status.textContent = '';
+          alert('✅ Merci ! Votre message a bien été envoyé. Je vous réponds sous 24h.');
+        } else {
+          alert("❌ Oups, l'envoi a échoué. Réessayez ou écrivez-moi par email/WhatsApp.");
+        }
+      } catch(err){
+        alert("❌ Oups, l'envoi a échoué. Réessayez ou écrivez-moi par email/WhatsApp.");
+      }
+    });
+  }
+})();
+</script>
+</body>
+</html>
 
   <!-- Modal Video Player -->
   <div class="modal" id="videoModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
@@ -232,29 +281,7 @@
     closeBtn.addEventListener('click', closeModal);
     modal.addEventListener('click', (e)=>{ if(e.target === modal) closeModal(); });
     document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape' && modal.classList.contains('show')) closeModal(); });
-
-    // Formulaire AJAX (reste sur la page)
-    const form = document.getElementById('contact-form');
-    const status = document.getElementById('form-status');
-    if(form){
-      form.addEventListener('submit', async (e)=>{
-        e.preventDefault();
-        status.textContent = 'Envoi en cours…';
-        const data = new FormData(form);
-        try{
-          const res = await fetch(form.action, { method:'POST', body:data, headers:{ 'Accept':'application/json' } });
-          if(res.ok){
-            form.reset();
-            status.textContent = '';
-            alert('✅ Merci ! Votre message a bien été envoyé. Je vous réponds sous 24h.');
-          }else{
-            alert("❌ Oups, l'envoi a échoué. Réessayez ou écrivez-moi par email/WhatsApp.");
-          }
-        }catch(err){
-          alert("❌ Oups, l'envoi a échoué. Réessayez ou écrivez-moi par email/WhatsApp.");
-        }
-      });
-    }
+    
   </script>
 </body>
 </html>
