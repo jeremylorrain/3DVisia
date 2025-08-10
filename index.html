@@ -9,27 +9,13 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
   <style>
-    :root{
-      --bg:#0c0f14;          /* fond profond */
-      --panel:#11161f;       /* panneaux */
-      --card:#141a25;        /* cartes */
-      --soft:#1b2433;        /* séparateurs doux */
-      --text:#dfe6f3;        /* texte principal */
-      --muted:#99a7bd;       /* texte secondaire */
-      --brand:#3aa8ff;       /* accent bleu tech */
-      --brand-2:#6ee7ff;     /* accent dégradé */
-      --gold:#f1c376;        /* touche premium */
-      --danger:#ff6b6b;
-      --success:#2ecc71;
-      --shadow: 0 10px 30px rgba(0,0,0,.40);
-      --radius: 18px;
-    }
+    :root{--bg:#0c0f14;--panel:#11161f;--card:#141a25;--text:#dfe6f3;--muted:#99a7bd;--brand:#3aa8ff;--brand-2:#6ee7ff;--shadow:0 10px 30px rgba(0,0,0,.40);--radius:18px}
     *{box-sizing:border-box}
-    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:'Inter',system-ui,Segoe UI,Roboto,Arial,sans-serif;}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:'Inter',system-ui,Segoe UI,Roboto,Arial,sans-serif}
     a{color:var(--brand);text-decoration:none}
     .container{width:min(1100px,92vw);margin-inline:auto}
     header{position:sticky;top:0;background:linear-gradient(180deg,rgba(12,15,20,.9),rgba(12,15,20,.6));backdrop-filter:saturate(140%) blur(10px);z-index:50;border-bottom:1px solid rgba(255,255,255,.06)}
-    .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 4px;}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 4px}
     .brand{display:flex;align-items:center;gap:12px}
     .brand svg{width:34px;height:34px}
     .brand-name{font-weight:800;letter-spacing:.3px}
@@ -44,7 +30,7 @@
     .hero-cta{display:flex;gap:12px;margin-top:18px;flex-wrap:wrap}
     .card{background:linear-gradient(180deg,var(--panel),var(--card));border:1px solid rgba(255,255,255,.06);border-radius:var(--radius);box-shadow:var(--shadow)}
     .vid-wrap{position:relative;overflow:hidden;border-radius:16px}
-    .vid-wrap video,.vid-wrap img{display:block;width:100%;height:auto}
+    .vid-wrap video{display:block;width:100%;height:auto}
     .floating{position:absolute;bottom:14px;left:14px;background:rgba(0,0,0,.55);backdrop-filter:blur(6px);padding:8px 12px;border-radius:10px;border:1px solid rgba(255,255,255,.15);font-size:12px}
     .section{padding:52px 0}
     .grid{display:grid;gap:18px}
@@ -57,24 +43,27 @@
     .step{padding:18px;border-radius:14px;border:1px dashed rgba(255,255,255,.16);background:#0e141f}
     .offer{padding:26px;border-radius:18px;background:linear-gradient(135deg,#0e1624,#0b1320 70%);border:1px solid rgba(60,180,255,.25)}
     .cta-row{display:flex;gap:12px;flex-wrap:wrap}
+
+    /* Gallery */
     .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-    .thumb{position:relative;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,.08)}
+    .thumb{position:relative;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,.08);cursor:pointer}
     .thumb img{width:100%;height:210px;object-fit:cover;display:block;filter:saturate(1.05)}
     .thumb .cap{position:absolute;inset:auto 8px 8px 8px;background:rgba(0,0,0,.5);padding:6px 8px;border-radius:8px;font-size:12px}
-    .contact-card{display:grid;grid-template-columns:1.2fr .8fr;gap:18px}
-    form{display:grid;gap:12px}
-    input,textarea{background:#0e1420;border:1px solid rgba(255,255,255,.10);color:var(--text);padding:12px 14px;border-radius:12px;font:inherit}
-    textarea{min-height:120px;resize:vertical}
-    .small{font-size:12px;color:#89a1bf}
-    footer{padding:30px 0;border-top:1px solid rgba(255,255,255,.06);color:#9fb5d3}
-    .logo-cube{filter:drop-shadow(0 6px 16px rgba(74,180,255,.25))}
+
+    /* Modal */
+    .modal{position:fixed;inset:0;background:rgba(0,0,0,.7);display:none;align-items:center;justify-content:center;padding:20px;z-index:1000}
+    .modal.show{display:flex}
+    .modal-inner{width:min(980px,96vw);background:#0b101a;border:1px solid rgba(255,255,255,.12);border-radius:14px;box-shadow:0 20px 60px rgba(0,0,0,.5);padding:12px}
+    .modal-head{display:flex;justify-content:space-between;align-items:center;padding:2px 6px 8px 6px}
+    .modal-head h3{margin:8px 0;font-size:16px;color:#cfe3ff}
+    .close{background:transparent;border:1px solid rgba(255,255,255,.2);color:#cfe3ff;border-radius:999px;padding:6px 10px;cursor:pointer}
+    video{width:100%;height:auto;border-radius:10px;background:#000}
 
     @media (max-width: 980px){
-      .hero{grid-template-columns:1fr;}
+      .hero{grid-template-columns:1fr}
       .grid.cols-3{grid-template-columns:1fr 1fr}
       .grid.cols-2{grid-template-columns:1fr}
       .process{grid-template-columns:1fr 1fr}
-      .contact-card{grid-template-columns:1fr}
       .gallery{grid-template-columns:1fr 1fr}
     }
     @media (max-width: 620px){
@@ -88,7 +77,6 @@
   <header>
     <div class="container nav">
       <div class="brand">
-        <!-- Inline SVG cube logo -->
         <svg class="logo-cube" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <defs>
             <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
@@ -124,7 +112,6 @@
         </div>
       </div>
       <div class="card vid-wrap">
-        <!-- Remplacez src par votre fichier vidéo local hébergé (ex: assets/hero.mp4) -->
         <video src="assets/hero.mp4" controls poster="assets/cover.jpg"></video>
         <div class="floating">🎬 Démo 3D — 1 min</div>
       </div>
@@ -134,30 +121,12 @@
     <section id="services" class="section container">
       <h2>Services</h2>
       <div class="grid cols-3" style="margin-top:14px">
-        <div class="service">
-          <h3>Rendus 3D réalistes</h3>
-          <p class="muted">Intérieurs & extérieurs, textures et lumières soignées pour se projeter immédiatement.</p>
-        </div>
-        <div class="service">
-          <h3>Vidéos animées</h3>
-          <p class="muted">Parcours fluide, logo & musique, formats pour site, réseaux & écrans de vente.</p>
-        </div>
-        <div class="service">
-          <h3>Home staging digital</h3>
-          <p class="muted">Avant/Après photoréaliste pour des biens vides ou en rénovation.</p>
-        </div>
-        <div class="service">
-          <h3>Visites virtuelles 360°</h3>
-          <p class="muted">Compatibles mobile & VR pour une immersion maximale.</p>
-        </div>
-        <div class="service">
-          <h3>Pack multilingue</h3>
-          <p class="muted">FR/EN et autres langues sur demande pour vos marchés internationaux.</p>
-        </div>
-        <div class="service">
-          <h3>Livraison express</h3>
-          <p class="muted">48–72h selon brief et complexité, retours inclus.</p>
-        </div>
+        <div class="service"><h3>Rendus 3D réalistes</h3><p class="muted">Intérieurs & extérieurs, textures et lumières soignées pour se projeter immédiatement.</p></div>
+        <div class="service"><h3>Vidéos animées</h3><p class="muted">Parcours fluide, logo & musique, formats pour site, réseaux & écrans de vente.</p></div>
+        <div class="service"><h3>Home staging digital</h3><p class="muted">Avant/Après photoréaliste pour des biens vides ou en rénovation.</p></div>
+        <div class="service"><h3>Visites virtuelles 360°</h3><p class="muted">Compatibles mobile & VR pour une immersion maximale.</p></div>
+        <div class="service"><h3>Pack multilingue</h3><p class="muted">FR/EN et autres langues sur demande pour vos marchés internationaux.</p></div>
+        <div class="service"><h3>Livraison express</h3><p class="muted">48–72h selon brief et complexité, retours inclus.</p></div>
       </div>
     </section>
 
@@ -184,69 +153,29 @@
       </div>
     </section>
 
-    <html lang="fr">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>3DVisia — Création 3D Immobilière Immersive</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    :root{--bg:#0c0f14;--text:#dfe6f3;--muted:#9fb0c9;--brand:#3aa8ff;--brand2:#6ee7ff}
-    *{box-sizing:border-box}
-    body{font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);margin:0}
-    h1,h2{margin:0 0 12px}
-    a{color:var(--brand)}
-    .container{width:min(1100px,92vw);margin:auto;padding:24px 0}
-    .btn{padding:10px 18px;background:linear-gradient(135deg,var(--brand),var(--brand2));color:#00131f;border:none;border-radius:999px;font-weight:700;cursor:pointer}
-    input,textarea{width:100%;padding:12px 14px;margin-bottom:10px;border-radius:10px;border:1px solid rgba(255,255,255,.12);background:#0e1420;color:#fff}
-    #form-status{margin-top:8px;font-size:14px;color:var(--muted)}
-
-    /* Gallery */
-    #portfolio .grid{display:grid;gap:14px;grid-template-columns:repeat(3,1fr)}
-    .card{position:relative;border:1px solid rgba(255,255,255,.08);border-radius:12px;overflow:hidden;background:#101622}
-    .thumb{width:100%;height:210px;object-fit:cover;display:block}
-    .cap{position:absolute;left:8px;right:8px;bottom:8px;background:rgba(0,0,0,.55);padding:6px 8px;border-radius:8px;font-size:12px}
-    @media(max-width:980px){#portfolio .grid{grid-template-columns:1fr 1fr}}
-    @media(max-width:620px){#portfolio .grid{grid-template-columns:1fr}}
-
-    /* Modal */
-    .modal{position:fixed;inset:0;background:rgba(0,0,0,.7);display:none;align-items:center;justify-content:center;padding:20px;z-index:1000}
-    .modal.show{display:flex}
-    .modal-inner{width:min(980px,96vw);background:#0b101a;border:1px solid rgba(255,255,255,.12);border-radius:14px;box-shadow:0 20px 60px rgba(0,0,0,.5);padding:12px}
-    .modal-head{display:flex;justify-content:space-between;align-items:center;padding:2px 6px 8px 6px}
-    .modal-head h3{margin:8px 0;font-size:16px;color:#cfe3ff}
-    .close{background:transparent;border:1px solid rgba(255,255,255,.2);color:#cfe3ff;border-radius:999px;padding:6px 10px;cursor:pointer}
-    video{width:100%;height:auto;border-radius:10px;background:#000}
-
-    /* Contact simple */
-    .section-title{font-weight:800;letter-spacing:.2px}
-  </style>
-</head>
-<body>
-  <main>
-    <!-- PORTFOLIO -->
-    <section id="portfolio" class="container">
-      <h2 class="section-title">Exemples de réalisations</h2>
-      <p style="margin:6px 0 16px;color:var(--muted)">Cliquez sur une vignette pour lire la vidéo sans quitter la page. Pour ajouter un exemple, uploadez votre <code>.mp4</code> et sa miniature <code>.jpg</code> dans <code>assets/</code>, puis ajoutez une entrée dans le tableau <code>items</code> ci‑dessous.</p>
-      <div class="grid" id="gallery"></div>
+    <!-- Portfolio / Gallery -->
+    <section id="portfolio" class="section container">
+      <h2>Exemples de réalisations</h2>
+      <p class="muted" style="margin:6px 0 16px">Cliquez sur une vignette pour lire la vidéo sans quitter la page.</p>
+      <div class="gallery" id="gallery"></div>
     </section>
 
-    <!-- CONTACT -->
-    <section id="contact" class="container">
-      <h2 class="section-title">Contact</h2>
-      <form id="contact-form" action="https://formsubmit.co/ajax/jeremylorrain45@yahoo.com" method="POST" style="max-width:620px">
-        <input type="hidden" name="_subject" value="Nouveau message — 3DVisia" />
-        <input type="hidden" name="_template" value="table" />
-        <input type="hidden" name="_captcha" value="false" />
-        <input name="Nom" placeholder="Nom / Société" required>
-        <input type="email" name="Email" placeholder="Email" required>
-        <input name="Téléphone" placeholder="Téléphone (optionnel)">
-        <textarea name="Message" placeholder="Parlez-moi de votre projet"></textarea>
-        <button class="btn" type="submit">Envoyer</button>
-        <div id="form-status" role="status" aria-live="polite"></div>
-      </form>
+    <!-- Contact -->
+    <section id="contact" class="section container">
+      <h2>Contact</h2>
+      <div class="card" style="padding:18px;max-width:720px">
+        <form id="contact-form" action="https://formsubmit.co/ajax/jeremylorrain45@yahoo.com" method="POST">
+          <input type="hidden" name="_subject" value="Nouveau message — 3DVisia" />
+          <input type="hidden" name="_template" value="table" />
+          <input type="hidden" name="_captcha" value="false" />
+          <input name="Nom" placeholder="Nom / Société" required>
+          <input type="email" name="Email" placeholder="Email" required>
+          <input name="Téléphone" placeholder="Téléphone (optionnel)">
+          <textarea name="Message" placeholder="Parlez-moi de votre projet (type de bien, surface, délai)"></textarea>
+          <button class="btn" type="submit">Envoyer</button>
+          <div id="form-status" class="small" role="status" aria-live="polite"></div>
+        </form>
+      </div>
     </section>
   </main>
 
@@ -262,38 +191,26 @@
   </div>
 
   <script>
-    /* ==========================
-       GALLERY DATA — AJOUTS ICI
-       ==========================
-       ➜ Pour ajouter une vidéo, ajoutez un objet dans le tableau items :
-       { title: 'Nom du projet', thumb: 'assets/sample-4.jpg', src: 'assets/sample-4.mp4' }
-    */
+    // ==== Données de la galerie (vos exemples) ====
+    // ➜ Ajoutez/retirez des objets au tableau items
     const items = [
-      { title: 'CORAL REEF - Ile Maurice', thumb: 'assets/sample-4.jpeg', src: 'assets/sample-4.mp4' },
-      { title: 'BAY VIEW VILLAGE - Montenegro', thumb: 'assets/sample-5.jpg', src: 'assets/sample-5.mp4' },
-      { title: 'OPEN SEA TREBESIN - Montenegro', thumb: 'assets/sample-6.jpg', src: 'assets/sample-6.mp4' } 
-      { title: 'OPEN SEA TREBESIN - Montenegro', thumb: 'assets/sample-6.jpg', src: 'assets/sample-6.mp4' } 
-      { title: 'OPEN SEA TREBESIN - Montenegro', thumb: 'assets/sample-6.jpg', src: 'assets/sample-6.mp4' } 
-      { title: 'OPEN SEA TREBESIN - Montenegro', thumb: 'assets/sample-6.jpg', src: 'assets/sample-6.mp4' } 
+      { title: 'CORAL REEF — Île Maurice', thumb: 'assets/sample-4.jpeg', src: 'assets/sample-4.mp4' },
+      { title: 'BAY VIEW VILLAGE — Monténégro', thumb: 'assets/sample-5.jpg', src: 'assets/sample-5.mp4' },
+      { title: 'OPEN SEA TREBESIN — Monténégro', thumb: 'assets/sample-6.jpg', src: 'assets/sample-6.mp4' }
     ];
 
-    // Render gallery
+    // Rendu des vignettes
     const gallery = document.getElementById('gallery');
-    const makeCard = (item) => {
-      const a = document.createElement('button');
-      a.className = 'card';
-      a.style.cursor = 'pointer';
-      a.setAttribute('aria-label', 'Lire: ' + item.title);
-      a.innerHTML = `
-        <img class="thumb" src="${item.thumb}" alt="${item.title}">
-        <span class="cap">${item.title}</span>
-      `;
-      a.addEventListener('click', ()=> openModal(item));
-      return a;
+    const makeThumb = (item) => {
+      const btn = document.createElement('button');
+      btn.className = 'thumb';
+      btn.innerHTML = `<img src="${item.thumb}" alt="${item.title}"><span class="cap">${item.title}</span>`;
+      btn.addEventListener('click', ()=> openModal(item));
+      return btn;
     };
-    items.forEach(it => gallery.appendChild(makeCard(it)));
+    items.forEach(it => gallery.appendChild(makeThumb(it)));
 
-    // Modal logic
+    // Modal
     const modal = document.getElementById('videoModal');
     const modalVideo = document.getElementById('modalVideo');
     const modalTitle = document.getElementById('modalTitle');
@@ -309,33 +226,35 @@
     function closeModal(){
       modal.classList.remove('show');
       modalVideo.pause();
-      modalVideo.removeAttribute('src'); // stop download
+      modalVideo.removeAttribute('src');
       modalVideo.load();
     }
     closeBtn.addEventListener('click', closeModal);
     modal.addEventListener('click', (e)=>{ if(e.target === modal) closeModal(); });
     document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape' && modal.classList.contains('show')) closeModal(); });
-  
-  <script>
+
+    // Formulaire AJAX (reste sur la page)
     const form = document.getElementById('contact-form');
     const status = document.getElementById('form-status');
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      status.textContent = 'Envoi en cours…';
-      const data = new FormData(form);
-      try {
-        const res = await fetch(form.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } });
-        if (res.ok) {
-          form.reset();
-          status.textContent = '';
-          alert('✅ Merci ! Votre message a bien été envoyé. Je vous réponds sous 24h.');
-        } else {
+    if(form){
+      form.addEventListener('submit', async (e)=>{
+        e.preventDefault();
+        status.textContent = 'Envoi en cours…';
+        const data = new FormData(form);
+        try{
+          const res = await fetch(form.action, { method:'POST', body:data, headers:{ 'Accept':'application/json' } });
+          if(res.ok){
+            form.reset();
+            status.textContent = '';
+            alert('✅ Merci ! Votre message a bien été envoyé. Je vous réponds sous 24h.');
+          }else{
+            alert("❌ Oups, l'envoi a échoué. Réessayez ou écrivez-moi par email/WhatsApp.");
+          }
+        }catch(err){
           alert("❌ Oups, l'envoi a échoué. Réessayez ou écrivez-moi par email/WhatsApp.");
         }
-      } catch (err) {
-        alert("❌ Oups, l'envoi a échoué. Réessayez ou écrivez-moi par email/WhatsApp.");
-      }
-    });
+      });
+    }
   </script>
 </body>
 </html>
