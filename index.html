@@ -204,7 +204,7 @@
       </div>
     </section>
 
-     <!-- Contact -->
+    <!-- Contact -->
     <section id="contact" class="section container">
       <h2>Contact</h2>
       <div class="contact-card card" style="padding:18px">
@@ -235,6 +235,7 @@
       </div>
     </section>
   </main>
+
   <footer>
     <div class="container" style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap">
       <div>© <span id="y"></span> 3DVisia — Création 3D Immobilière Immersive</div>
@@ -254,6 +255,27 @@
         if(el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth', block:'start'}); }
       })
     })
+      // Envoi AJAX du formulaire via FormSubmit (reste sur la page)
+    const form = document.getElementById('contact-form');
+    const status = document.getElementById('form-status');
+    if(form){
+      form.addEventListener('submit', async (e)=>{
+        e.preventDefault();
+        status.textContent = 'Envoi en cours…';
+        const data = new FormData(form);
+        try{
+          const res = await fetch(form.action, { method:'POST', body:data, headers:{ 'Accept':'application/json' } });
+          if(res.ok){
+            form.reset();
+            status.textContent = '✅ Merci ! Votre message a bien été envoyé. Je vous réponds sous 24h.';
+          }else{
+            status.textContent = "❌ Oups, l'envoi a échoué. Réessayez ou écrivez-moi par WhatsApp.";
+          }
+        }catch(err){
+          status.textContent = "❌ Oups, l'envoi a échoué. Réessayez ou écrivez-moi par WhatsApp.";
+        }
+      });
+    }
   </script>
 </body>
 </html>
