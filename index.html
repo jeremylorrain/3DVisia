@@ -184,64 +184,137 @@
       </div>
     </section>
 
-    <!-- Portfolio / Gallery -->
-    <section id="portfolio" class="section container">
-      <h2>Exemples de réalisations</h2>
-      <div class="gallery" style="margin-top:16px">
-        <!-- Remplacez les images par vos captures, et les liens par vos vidéos ou pages projet -->
-        <a class="thumb" href="assets/sample-4.mp4" target="_blank" rel="noopener">
-          <img src="assets/sample-4.jpeg" alt="Appartement moderne — vidéo 3D" loading="lazy">
-          <span class="cap">CORAL REEF - Ile Maurice</span>
-        </a>
-        <a class="thumb" href="assets/sample-5.mp4" target="_blank" rel="noopener">
-          <img src="assets/sample-5.jpg" alt="BAY VIEW VILLAGE - Montenegro" loading="lazy">
-          <span class="cap">BAY VIEW VILLAGE - Montenegro</span>
-        </a>
-        <a class="thumb" href="assets/sample-6.mp4" target="_blank" rel="noopener">
-          <img src="assets/sample-6.jpg" alt="OPEN SEA TREBESIN - Montenegro" loading="lazy">
-          <span class="cap">OPEN SEA TREBESIN - Montenegro</span>
-        </a>
-      </div>
+    <html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>3DVisia — Création 3D Immobilière Immersive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#0c0f14;--text:#dfe6f3;--muted:#9fb0c9;--brand:#3aa8ff;--brand2:#6ee7ff}
+    *{box-sizing:border-box}
+    body{font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);margin:0}
+    h1,h2{margin:0 0 12px}
+    a{color:var(--brand)}
+    .container{width:min(1100px,92vw);margin:auto;padding:24px 0}
+    .btn{padding:10px 18px;background:linear-gradient(135deg,var(--brand),var(--brand2));color:#00131f;border:none;border-radius:999px;font-weight:700;cursor:pointer}
+    input,textarea{width:100%;padding:12px 14px;margin-bottom:10px;border-radius:10px;border:1px solid rgba(255,255,255,.12);background:#0e1420;color:#fff}
+    #form-status{margin-top:8px;font-size:14px;color:var(--muted)}
+
+    /* Gallery */
+    #portfolio .grid{display:grid;gap:14px;grid-template-columns:repeat(3,1fr)}
+    .card{position:relative;border:1px solid rgba(255,255,255,.08);border-radius:12px;overflow:hidden;background:#101622}
+    .thumb{width:100%;height:210px;object-fit:cover;display:block}
+    .cap{position:absolute;left:8px;right:8px;bottom:8px;background:rgba(0,0,0,.55);padding:6px 8px;border-radius:8px;font-size:12px}
+    @media(max-width:980px){#portfolio .grid{grid-template-columns:1fr 1fr}}
+    @media(max-width:620px){#portfolio .grid{grid-template-columns:1fr}}
+
+    /* Modal */
+    .modal{position:fixed;inset:0;background:rgba(0,0,0,.7);display:none;align-items:center;justify-content:center;padding:20px;z-index:1000}
+    .modal.show{display:flex}
+    .modal-inner{width:min(980px,96vw);background:#0b101a;border:1px solid rgba(255,255,255,.12);border-radius:14px;box-shadow:0 20px 60px rgba(0,0,0,.5);padding:12px}
+    .modal-head{display:flex;justify-content:space-between;align-items:center;padding:2px 6px 8px 6px}
+    .modal-head h3{margin:8px 0;font-size:16px;color:#cfe3ff}
+    .close{background:transparent;border:1px solid rgba(255,255,255,.2);color:#cfe3ff;border-radius:999px;padding:6px 10px;cursor:pointer}
+    video{width:100%;height:auto;border-radius:10px;background:#000}
+
+    /* Contact simple */
+    .section-title{font-weight:800;letter-spacing:.2px}
+  </style>
+</head>
+<body>
+  <main>
+    <!-- PORTFOLIO -->
+    <section id="portfolio" class="container">
+      <h2 class="section-title">Exemples de réalisations</h2>
+      <p style="margin:6px 0 16px;color:var(--muted)">Cliquez sur une vignette pour lire la vidéo sans quitter la page. Pour ajouter un exemple, uploadez votre <code>.mp4</code> et sa miniature <code>.jpg</code> dans <code>assets/</code>, puis ajoutez une entrée dans le tableau <code>items</code> ci‑dessous.</p>
+      <div class="grid" id="gallery"></div>
     </section>
 
-    <!-- Contact -->
-    <section id="contact" class="section container">
-      <h2>Contact</h2>
-      <div class="contact-card card" style="padding:18px">
-        <div>
-          <p class="muted" style="margin-top:0">Dites-m'en plus sur votre projet et recevez une démo gratuite sous 24h.</p>
-          <!-- Formulaire mailto (pas de backend nécessaire). Vous pouvez remplacer l'adresse ci-dessous. -->
-          <form id="contact-form" action="https://formsubmit.co/ajax/jeremylorrain45@yahoo.fr" method="POST">
-            <!-- Remplacez EMAIL@EXEMPLE.COM par votre adresse de réception -->
-            <input type="hidden" name="_subject" value="Nouveau message — 3DVisia" />
-            <input type="hidden" name="_template" value="table" />
-            <input type="hidden" name="_captcha" value="false" />
-
-            <input name="Nom" placeholder="Nom / Société" required>
-            <input type="email" name="Email" placeholder="Email" required>
-            <input name="Téléphone" placeholder="Téléphone (optionnel)">
-            <textarea name="Message" placeholder="Parlez-moi de votre projet (type de bien, surface, délai)"></textarea>
-            <button class="btn" type="submit">Envoyer</button>
-            <div id="form-status" class="small" role="status" aria-live="polite"></div>
-            <div class="small">Ou écrivez-moi sur WhatsApp : <a href="https://wa.me/+33659915829" target="_blank" rel="noopener">+33 6 59 91 58 29</a></div>
-          </form>
-        </div>
-        <div class="card" style="padding:16px">
-          <h3 style="margin-top:0">Infos</h3>
-          <div class="small">Basé au Monténégro — projets internationaux (FR/EN)</div>
-          <div class="small">Livraison 48–72h selon complexité</div>
-          <div class="small">Formats : MP4, WebM, images HD, 360°</div>
-        </div>
-      </div>
+    <!-- CONTACT -->
+    <section id="contact" class="container">
+      <h2 class="section-title">Contact</h2>
+      <form id="contact-form" action="https://formsubmit.co/ajax/jeremylorrain45@yahoo.com" method="POST" style="max-width:620px">
+        <input type="hidden" name="_subject" value="Nouveau message — 3DVisia" />
+        <input type="hidden" name="_template" value="table" />
+        <input type="hidden" name="_captcha" value="false" />
+        <input name="Nom" placeholder="Nom / Société" required>
+        <input type="email" name="Email" placeholder="Email" required>
+        <input name="Téléphone" placeholder="Téléphone (optionnel)">
+        <textarea name="Message" placeholder="Parlez-moi de votre projet"></textarea>
+        <button class="btn" type="submit">Envoyer</button>
+        <div id="form-status" role="status" aria-live="polite"></div>
+      </form>
     </section>
   </main>
 
-  <footer>
-    <div class="container" style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap">
-      <div>© <span id="y"></span> 3DVisia — Création 3D Immobilière Immersive</div>
-      <div class="small">Fait avec ❤ au Monténégro</div>
+  <!-- Modal Video Player -->
+  <div class="modal" id="videoModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-inner">
+      <div class="modal-head">
+        <h3 id="modalTitle">Lecture</h3>
+        <button class="close" id="closeModal">Fermer</button>
+      </div>
+      <video id="modalVideo" controls playsinline></video>
     </div>
-  </footer>
+  </div>
+
+  <script>
+    /* ==========================
+       GALLERY DATA — AJOUTS ICI
+       ==========================
+       ➜ Pour ajouter une vidéo, ajoutez un objet dans le tableau items :
+       { title: 'Nom du projet', thumb: 'assets/sample-4.jpg', src: 'assets/sample-4.mp4' }
+    */
+    const items = [
+      { title: 'CORAL REEF - Ile Maurice', thumb: 'assets/sample-4.jpeg', src: 'assets/sample-4.mp4' },
+      { title: 'BAY VIEW VILLAGE - Montenegro', thumb: 'assets/sample-5.jpg', src: 'assets/sample-5.mp4' },
+      { title: 'OPEN SEA TREBESIN - Montenegro', thumb: 'assets/sample-6.jpg', src: 'assets/sample-6.mp4' } 
+      { title: 'OPEN SEA TREBESIN - Montenegro', thumb: 'assets/sample-6.jpg', src: 'assets/sample-6.mp4' } 
+      { title: 'OPEN SEA TREBESIN - Montenegro', thumb: 'assets/sample-6.jpg', src: 'assets/sample-6.mp4' } 
+      { title: 'OPEN SEA TREBESIN - Montenegro', thumb: 'assets/sample-6.jpg', src: 'assets/sample-6.mp4' } 
+    ];
+
+    // Render gallery
+    const gallery = document.getElementById('gallery');
+    const makeCard = (item) => {
+      const a = document.createElement('button');
+      a.className = 'card';
+      a.style.cursor = 'pointer';
+      a.setAttribute('aria-label', 'Lire: ' + item.title);
+      a.innerHTML = `
+        <img class="thumb" src="${item.thumb}" alt="${item.title}">
+        <span class="cap">${item.title}</span>
+      `;
+      a.addEventListener('click', ()=> openModal(item));
+      return a;
+    };
+    items.forEach(it => gallery.appendChild(makeCard(it)));
+
+    // Modal logic
+    const modal = document.getElementById('videoModal');
+    const modalVideo = document.getElementById('modalVideo');
+    const modalTitle = document.getElementById('modalTitle');
+    const closeBtn = document.getElementById('closeModal');
+
+    function openModal(item){
+      modal.classList.add('show');
+      modalVideo.src = item.src;
+      modalVideo.currentTime = 0;
+      modalVideo.play().catch(()=>{});
+      modalTitle.textContent = item.title;
+    }
+    function closeModal(){
+      modal.classList.remove('show');
+      modalVideo.pause();
+      modalVideo.removeAttribute('src'); // stop download
+      modalVideo.load();
+    }
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e)=>{ if(e.target === modal) closeModal(); });
+    document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape' && modal.classList.contains('show')) closeModal(); });
   
   <script>
     const form = document.getElementById('contact-form');
