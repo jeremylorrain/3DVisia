@@ -204,19 +204,25 @@
       </div>
     </section>
 
-    <!-- Contact -->
+     <!-- Contact -->
     <section id="contact" class="section container">
       <h2>Contact</h2>
       <div class="contact-card card" style="padding:18px">
         <div>
           <p class="muted" style="margin-top:0">Dites-m'en plus sur votre projet et recevez une démo gratuite sous 24h.</p>
           <!-- Formulaire mailto (pas de backend nécessaire). Vous pouvez remplacer l'adresse ci-dessous. -->
-          <form action="jeremylorrain45@yahoo.fr" method="post" enctype="text/plain">
+          <form id="contact-form" action="https://formsubmit.co/ajax/jeremylorrain45@yahoo.fr" method="POST">
+            <!-- Remplacez EMAIL@EXEMPLE.COM par votre adresse de réception -->
+            <input type="hidden" name="_subject" value="Nouveau message — 3DVisia" />
+            <input type="hidden" name="_template" value="table" />
+            <input type="hidden" name="_captcha" value="false" />
+
             <input name="Nom" placeholder="Nom / Société" required>
             <input type="email" name="Email" placeholder="Email" required>
             <input name="Téléphone" placeholder="Téléphone (optionnel)">
             <textarea name="Message" placeholder="Parlez-moi de votre projet (type de bien, surface, délai)"></textarea>
             <button class="btn" type="submit">Envoyer</button>
+            <div id="form-status" class="small" role="status" aria-live="polite"></div>
             <div class="small">Ou écrivez-moi sur WhatsApp : <a href="https://wa.me/0000000000" target="_blank" rel="noopener">+00 00 00 00 00</a></div>
           </form>
         </div>
@@ -229,7 +235,6 @@
       </div>
     </section>
   </main>
-
   <footer>
     <div class="container" style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap">
       <div>© <span id="y"></span> 3DVisia — Création 3D Immobilière Immersive</div>
