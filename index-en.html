@@ -61,6 +61,14 @@
     .close{background:transparent;border:1px solid rgba(255,255,255,.2);color:#cfe3ff;border-radius:999px;padding:6px 10px;cursor:pointer}
     video{width:100%;height:auto;border-radius:10px;background:#000}
 
+    /* Contact (missing styles added) */
+    .card { background:linear-gradient(180deg,#11161f,#141a25); border-radius:18px; border:1px solid rgba(255,255,255,.06); box-shadow:0 10px 30px rgba(0,0,0,.4); }
+    input, textarea { width:100%; padding:10px; margin-bottom:12px; border-radius:10px; border:1px solid rgba(255,255,255,.15); background:#0e1420; color:#fff; font-size:14px; }
+    textarea { min-height:90px; resize:vertical; }
+    form { display:flex; flex-direction:column; gap:10px; }
+    button.btn { align-self:flex-start; padding:10px 20px; border:none; border-radius:999px; background:linear-gradient(135deg,#3aa8ff,#6ee7ff); color:#00131f; font-weight:700; cursor:pointer; }
+    #form-status { font-size:13px; color:#99a7bd; margin-top:4px; }
+
     @media (max-width: 980px){
       .hero{grid-template-columns:1fr}
       .grid.cols-3{grid-template-columns:1fr 1fr}
@@ -97,13 +105,13 @@
         <a href="#process">Process</a>
         <a href="#portfolio">Portfolio</a>
         <a href="#contact" class="btn secondary">Contact</a>
-        <a href="index-en.html">EN</a>
-  <span style="opacity:.6">|</span>
-  <a href="index.html">FR</a>
-</nav>
+        <span style="opacity:.6;margin-left:10px;">|</span>
+        <a href="index-en-fixed.html" aria-current="page" style="font-weight:700;color:#fff">EN</a>
+        <a href="index.html" style="margin-left:8px;">FR</a>
       </nav>
     </div>
   </header>
+
   <main>
     <!-- Hero -->
     <section class="container hero">
@@ -164,101 +172,31 @@
       <p class="muted" style="margin:6px 0 16px">Click a thumbnail to play the video without leaving the page.</p>
       <div class="gallery" id="gallery"></div>
     </section>
-/* Contact */
-.card {
-  background:linear-gradient(180deg,#11161f,#141a25);
-  border-radius:18px;
-  border:1px solid rgba(255,255,255,.06);
-  box-shadow:0 10px 30px rgba(0,0,0,.4);
-}
-input, textarea {
-  width:100%;
-  padding:10px;
-  margin-bottom:12px;
-  border-radius:10px;
-  border:1px solid rgba(255,255,255,.15);
-  background:#0e1420;
-  color:#fff;
-  font-size:14px;
-}
-textarea {
-  min-height:90px;
-  resize:vertical;
-}
-form {
-  display:flex;
-  flex-direction:column;
-  gap:10px;
-}
-button.btn {
-  align-self:flex-start;
-  padding:10px 20px;
-  border:none;
-  border-radius:999px;
-  background:linear-gradient(135deg,#3aa8ff,#6ee7ff);
-  color:#00131f;
-  font-weight:700;
-  cursor:pointer;
-}
-#form-status {
-  font-size:13px;
-  color:#99a7bd;
-  margin-top:4px;
-}
-  <!-- Contact -->
-  <section id="contact" class="section">
-    <div class="container" style="max-width:720px; margin:auto;">
+
+    <!-- Contact -->
+    <section id="contact" class="section container">
       <h2>Contact</h2>
-      <div class="card" style="padding:20px;">
+      <div class="card" style="padding:18px;max-width:720px">
         <form id="contact-form" action="https://formsubmit.co/ajax/jeremylorrain45@yahoo.fr" method="POST">
-          <input type="hidden" name="_subject" value="Nouveau message — 3DVisia">
-          <input type="hidden" name="_template" value="table">
-          <input type="hidden" name="_captcha" value="false">
-          <input name="Nom" placeholder="Nom / Société" required>
+          <input type="hidden" name="_subject" value="New message — 3DVisia" />
+          <input type="hidden" name="_template" value="table" />
+          <input type="hidden" name="_captcha" value="false" />
+          <input name="Name" placeholder="Name / Company" required>
           <input type="email" name="Email" placeholder="Email" required>
           <input name="Phone" placeholder="Phone (optional)">
           <textarea name="Message" placeholder="Tell me about your project (property type, size, deadline)"></textarea>
           <button class="btn" type="submit">Send</button>
-          <div id="form-status" role="status" aria-live="polite"></div>
+          <div id="form-status" class="muted" role="status" aria-live="polite"></div>
         </form>
       </div>
-    </div>
-  </section>
-
-<script>
-(() => {
-  const form = document.getElementById('contact-form');
-  const status = document.getElementById('form-status');
-  if(form){
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      status.textContent = 'Sending in progress…';
-      const data = new FormData(form);
-      try {
-        const res = await fetch(form.action, { method:'POST', body:data, headers:{ 'Accept':'application/json' } });
-        if(res.ok){
-          form.reset();
-          status.textContent = '';
-          alert('✅ Thank you! Your message has been sent. I will answer you within 24 hours.');
-        } else {
-          alert("❌ Oops, the sending failed. Try again or write me by email/WhatsApp.");
-        }
-      } catch(err){
-        alert("❌ Oops, the sending failed. Try again or write me by email/WhatsApp.");
-      }
-    });
-  }
-})();
-</script>
-</body>
-</html>
-
+    </section>
+  </main>
 
   <!-- Modal Video Player -->
   <div class="modal" id="videoModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
     <div class="modal-inner">
       <div class="modal-head">
-        <h3 id="modalTitle">Lecture</h3>
+        <h3 id="modalTitle">Playing</h3>
         <button class="close" id="closeModal">Close</button>
       </div>
       <video id="modalVideo" controls playsinline></video>
@@ -266,26 +204,27 @@ button.btn {
   </div>
 
   <script>
-    // ==== Données de la galerie (vos exemples) ====
-    // ➜ Ajoutez/retirez des objets au tableau items
+    // ====== Gallery data ======
     const items = [
-      { title: 'CORAL REEF — Île Maurice', thumb: 'assets/sample-4.jpeg', src: 'assets/sample-4.mp4' },
-      { title: 'BAY VIEW VILLAGE — Monténégro', thumb: 'assets/sample-5.jpg', src: 'assets/sample-5.mp4' },
-      { title: 'OPEN SEA TREBESIN — Monténégro', thumb: 'assets/sample-6.jpg', src: 'assets/sample-6.mp4' }
+      { title: 'CORAL REEF — Mauritius', thumb: 'assets/sample-4.jpeg', src: 'assets/sample-4.mp4' },
+      { title: 'BAY VIEW VILLAGE — Montenegro', thumb: 'assets/sample-5.jpg', src: 'assets/sample-5.mp4' },
+      { title: 'OPEN SEA TREBESIN — Montenegro', thumb: 'assets/sample-6.jpg', src: 'assets/sample-6.mp4' }
     ];
 
-    // Rendu des vignettes
-    const gallery = document.getElementById('gallery');
-    const makeThumb = (item) => {
+    // Render thumbnails (define once)
+    function makeThumb(item){
       const btn = document.createElement('button');
       btn.className = 'thumb';
       btn.innerHTML = `<img src="${item.thumb}" alt="${item.title}"><span class="cap">${item.title}</span>`;
       btn.addEventListener('click', ()=> openModal(item));
       return btn;
-    };
-    items.forEach(it => gallery.appendChild(makeThumb(it)));
+    }
+    (function renderGallery(){
+      const gallery = document.getElementById('gallery');
+      items.forEach(it => gallery.appendChild(makeThumb(it)));
+    })();
 
-    // Modal
+    // Modal controls
     const modal = document.getElementById('videoModal');
     const modalVideo = document.getElementById('modalVideo');
     const modalTitle = document.getElementById('modalTitle');
@@ -307,7 +246,30 @@ button.btn {
     closeBtn.addEventListener('click', closeModal);
     modal.addEventListener('click', (e)=>{ if(e.target === modal) closeModal(); });
     document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape' && modal.classList.contains('show')) closeModal(); });
-    
+
+    // Contact AJAX
+    (function handleForm(){
+      const form = document.getElementById('contact-form');
+      const status = document.getElementById('form-status');
+      if(!form) return;
+      form.addEventListener('submit', async (e)=>{
+        e.preventDefault();
+        status.textContent = 'Sending…';
+        const data = new FormData(form);
+        try{
+          const res = await fetch(form.action, { method:'POST', body:data, headers:{ 'Accept':'application/json' } });
+          if(res.ok){
+            form.reset();
+            status.textContent = '';
+            alert('✅ Thanks! Your message has been sent. I’ll get back to you within 24h.');
+          }else{
+            alert('❌ Oops, sending failed. Please try again or email/WhatsApp me.');
+          }
+        }catch(err){
+          alert('❌ Oops, sending failed. Please try again or email/WhatsApp me.');
+        }
+      });
+    })();
   </script>
 </body>
 </html>
