@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>3DVisia — Création 3D Immobilière Immersive</title>
+  <meta name="description" content="Rendus 3D réalistes, vidéos immersives et visites virtuelles pour promoteurs et agences immobilières. Livraison 48–72h. Démo gratuite." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0c0f14;          /* fond profond */
+      --panel:#11161f;       /* panneaux */
+      --card:#141a25;        /* cartes */
+      --soft:#1b2433;        /* séparateurs doux */
+      --text:#dfe6f3;        /* texte principal */
+      --muted:#99a7bd;       /* texte secondaire */
+      --brand:#3aa8ff;       /* accent bleu tech */
+      --brand-2:#6ee7ff;     /* accent dégradé */
+      --gold:#f1c376;        /* touche premium */
+      --danger:#ff6b6b;
+      --success:#2ecc71;
+      --shadow: 0 10px 30px rgba(0,0,0,.40);
+      --radius: 18px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:'Inter',system-ui,Segoe UI,Roboto,Arial,sans-serif;}
+    a{color:var(--brand);text-decoration:none}
+    .container{width:min(1100px,92vw);margin-inline:auto}
+    header{position:sticky;top:0;background:linear-gradient(180deg,rgba(12,15,20,.9),rgba(12,15,20,.6));backdrop-filter:saturate(140%) blur(10px);z-index:50;border-bottom:1px solid rgba(255,255,255,.06)}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 4px;}
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand svg{width:34px;height:34px}
+    .brand-name{font-weight:800;letter-spacing:.3px}
+    .nav a{margin-left:18px;color:#cfe3ff}
+    .btn{display:inline-flex;align-items:center;gap:10px;border:none;border-radius:999px;padding:12px 18px;font-weight:700;letter-spacing:.2px;cursor:pointer;background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#00131f;box-shadow:0 6px 18px rgba(80,190,255,.35)}
+    .btn.ghost{background:transparent;color:var(--text);border:1px solid rgba(255,255,255,.12)}
+    .btn.secondary{background:#1e2635;color:#d7e6ff;border:1px solid rgba(255,255,255,.08)}
+    .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:center;padding:48px 0 26px}
+    .badge{display:inline-flex;align-items:center;gap:8px;background:#0f1622;border:1px solid rgba(255,255,255,.08);padding:8px 12px;border-radius:999px;color:#a9c8ff;font-weight:600}
+    .headline{font-size:44px;line-height:1.1;margin:14px 0 10px;letter-spacing:.2px}
+    .sub{color:var(--muted);font-size:18px}
+    .hero-cta{display:flex;gap:12px;margin-top:18px;flex-wrap:wrap}
+    .card{background:linear-gradient(180deg,var(--panel),var(--card));border:1px solid rgba(255,255,255,.06);border-radius:var(--radius);box-shadow:var(--shadow)}
+    .vid-wrap{position:relative;overflow:hidden;border-radius:16px}
+    .vid-wrap video,.vid-wrap img{display:block;width:100%;height:auto}
+    .floating{position:absolute;bottom:14px;left:14px;background:rgba(0,0,0,.55);backdrop-filter:blur(6px);padding:8px 12px;border-radius:10px;border:1px solid rgba(255,255,255,.15);font-size:12px}
+    .section{padding:52px 0}
+    .grid{display:grid;gap:18px}
+    .grid.cols-3{grid-template-columns:repeat(3,1fr)}
+    .grid.cols-2{grid-template-columns:repeat(2,1fr)}
+    .service{padding:22px;border-radius:16px;background:linear-gradient(180deg,#101521,#0b0f17);border:1px solid rgba(255,255,255,.06)}
+    .service h3{margin:10px 0 6px}
+    .muted{color:var(--muted)}
+    .process{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+    .step{padding:18px;border-radius:14px;border:1px dashed rgba(255,255,255,.16);background:#0e141f}
+    .offer{padding:26px;border-radius:18px;background:linear-gradient(135deg,#0e1624,#0b1320 70%);border:1px solid rgba(60,180,255,.25)}
+    .cta-row{display:flex;gap:12px;flex-wrap:wrap}
+    .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .thumb{position:relative;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,.08)}
+    .thumb img{width:100%;height:210px;object-fit:cover;display:block;filter:saturate(1.05)}
+    .thumb .cap{position:absolute;inset:auto 8px 8px 8px;background:rgba(0,0,0,.5);padding:6px 8px;border-radius:8px;font-size:12px}
+    .contact-card{display:grid;grid-template-columns:1.2fr .8fr;gap:18px}
+    form{display:grid;gap:12px}
+    input,textarea{background:#0e1420;border:1px solid rgba(255,255,255,.10);color:var(--text);padding:12px 14px;border-radius:12px;font:inherit}
+    textarea{min-height:120px;resize:vertical}
+    .small{font-size:12px;color:#89a1bf}
+    footer{padding:30px 0;border-top:1px solid rgba(255,255,255,.06);color:#9fb5d3}
+    .logo-cube{filter:drop-shadow(0 6px 16px rgba(74,180,255,.25))}
+
+    @media (max-width: 980px){
+      .hero{grid-template-columns:1fr;}
+      .grid.cols-3{grid-template-columns:1fr 1fr}
+      .grid.cols-2{grid-template-columns:1fr}
+      .process{grid-template-columns:1fr 1fr}
+      .contact-card{grid-template-columns:1fr}
+      .gallery{grid-template-columns:1fr 1fr}
+    }
+    @media (max-width: 620px){
+      .headline{font-size:34px}
+      .grid.cols-3,.gallery{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <!-- Header / Nav -->
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <!-- Inline SVG cube logo -->
+        <svg class="logo-cube" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs>
+            <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#3aa8ff"/>
+              <stop offset="100%" stop-color="#6ee7ff"/>
+            </linearGradient>
+          </defs>
+          <path d="M32 4 58 16 32 28 6 16 32 4Z" stroke="url(#g)" stroke-width="2.5"/>
+          <path d="M6 16v32l26 12V28L6 16Z" stroke="url(#g)" stroke-width="2.5"/>
+          <path d="M58 16v32L32 60V28l26-12Z" stroke="url(#g)" stroke-width="2.5"/>
+        </svg>
+        <div class="brand-name">3DVisia</div>
+      </div>
+      <nav>
+        <a href="#services">Services</a>
+        <a href="#process">Process</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#contact" class="btn secondary">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="container hero">
+      <div>
+        <span class="badge">🎯 Vendre sur plan plus vite</span>
+        <h1 class="headline">Transformez vos projets immobiliers en <span style="background:linear-gradient(90deg,var(--brand),var(--brand-2));-webkit-background-clip:text;background-clip:text;color:transparent">expériences 3D immersives</span></h1>
+        <p class="sub">Rendus 3D réalistes, vidéos animées et visites virtuelles pour accélérer la décision d'achat et valoriser vos biens dès la phase de plan. Livraison 48–72h. Démo gratuite.</p>
+        <div class="hero-cta">
+          <a href="#contact" class="btn">Demander une vidéo gratuite</a>
+          <a href="#portfolio" class="btn ghost">Voir des exemples</a>
+        </div>
+      </div>
+      <div class="card vid-wrap">
+        <!-- Remplacez src par votre fichier vidéo local hébergé (ex: assets/hero.mp4) -->
+        <video src="assets/hero.mp4" controls poster="assets/cover.jpg"></video>
+        <div class="floating">🎬 Démo 3D — 1 min</div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="section container">
+      <h2>Services</h2>
+      <div class="grid cols-3" style="margin-top:14px">
+        <div class="service">
+          <h3>Rendus 3D réalistes</h3>
+          <p class="muted">Intérieurs & extérieurs, textures et lumières soignées pour se projeter immédiatement.</p>
+        </div>
+        <div class="service">
+          <h3>Vidéos animées</h3>
+          <p class="muted">Parcours fluide, logo & musique, formats pour site, réseaux & écrans de vente.</p>
+        </div>
+        <div class="service">
+          <h3>Home staging digital</h3>
+          <p class="muted">Avant/Après photoréaliste pour des biens vides ou en rénovation.</p>
+        </div>
+        <div class="service">
+          <h3>Visites virtuelles 360°</h3>
+          <p class="muted">Compatibles mobile & VR pour une immersion maximale.</p>
+        </div>
+        <div class="service">
+          <h3>Pack multilingue</h3>
+          <p class="muted">FR/EN et autres langues sur demande pour vos marchés internationaux.</p>
+        </div>
+        <div class="service">
+          <h3>Livraison express</h3>
+          <p class="muted">48–72h selon brief et complexité, retours inclus.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Process -->
+    <section id="process" class="section container">
+      <h2>Process simple & rapide</h2>
+      <div class="process" style="margin-top:14px">
+        <div class="step"><strong>1. Brief</strong><br><span class="muted">Plans, images, style souhaité.</span></div>
+        <div class="step"><strong>2. Preview</strong><br><span class="muted">Maquette & angles proposés.</span></div>
+        <div class="step"><strong>3. Production</strong><br><span class="muted">Rendus HD & montage vidéo.</span></div>
+        <div class="step"><strong>4. Livraison</strong><br><span class="muted">Export web & réseaux, retours inclus.</span></div>
+      </div>
+    </section>
+
+    <!-- Offer -->
+    <section class="section container">
+      <div class="offer">
+        <h2 style="margin-top:0">🎁 Offre découverte — démo gratuite</h2>
+        <p class="muted">Envoyez un plan ou des visuels : je réalise un extrait vidéo gratuit pour vous montrer l'impact. Sans engagement.</p>
+        <div class="cta-row">
+          <a href="#contact" class="btn">Envoyer mon projet</a>
+          <a href="#portfolio" class="btn ghost">Voir des exemples</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Portfolio / Gallery -->
+    <section id="portfolio" class="section container">
+      <h2>Exemples de réalisations</h2>
+      <div class="gallery" style="margin-top:16px">
+        <!-- Remplacez les images par vos captures, et les liens par vos vidéos ou pages projet -->
+        <a class="thumb" href="assets/sample-1.mp4" target="_blank" rel="noopener">
+          <img src="assets/sample-1.jpg" alt="Appartement moderne — vidéo 3D" loading="lazy">
+          <span class="cap">Appartement moderne — vidéo 3D</span>
+        </a>
+        <a class="thumb" href="assets/sample-2.mp4" target="_blank" rel="noopener">
+          <img src="assets/sample-2.jpg" alt="Villa contemporaine — vidéo 3D" loading="lazy">
+          <span class="cap">Villa contemporaine — vidéo 3D</span>
+        </a>
+        <a class="thumb" href="assets/sample-3.mp4" target="_blank" rel="noopener">
+          <img src="assets/sample-3.jpg" alt="Lobby & espaces communs — vidéo 3D" loading="lazy">
+          <span class="cap">Lobby & espaces communs — vidéo 3D</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section container">
+      <h2>Contact</h2>
+      <div class="contact-card card" style="padding:18px">
+        <div>
+          <p class="muted" style="margin-top:0">Dites-m'en plus sur votre projet et recevez une démo gratuite sous 24h.</p>
+          <!-- Formulaire mailto (pas de backend nécessaire). Vous pouvez remplacer l'adresse ci-dessous. -->
+          <form action="mailto:contact@3dvisia.com" method="post" enctype="text/plain">
+            <input name="Nom" placeholder="Nom / Société" required>
+            <input type="email" name="Email" placeholder="Email" required>
+            <input name="Téléphone" placeholder="Téléphone (optionnel)">
+            <textarea name="Message" placeholder="Parlez-moi de votre projet (type de bien, surface, délai)"></textarea>
+            <button class="btn" type="submit">Envoyer</button>
+            <div class="small">Ou écrivez-moi sur WhatsApp : <a href="https://wa.me/0000000000" target="_blank" rel="noopener">+00 00 00 00 00</a></div>
+          </form>
+        </div>
+        <div class="card" style="padding:16px">
+          <h3 style="margin-top:0">Infos</h3>
+          <div class="small">Basé au Monténégro — projets internationaux (FR/EN)</div>
+          <div class="small">Livraison 48–72h selon complexité</div>
+          <div class="small">Formats : MP4, WebM, images HD, 360°</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container" style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap">
+      <div>© <span id="y"></span> 3DVisia — Création 3D Immobilière Immersive</div>
+      <div class="small">Fait avec ❤ au Monténégro</div>
+    </div>
+  </footer>
+
+  <script>
+    // Année automatique
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Défilement doux pour les ancres
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        const id = a.getAttribute('href').slice(1);
+        const el = document.getElementById(id);
+        if(el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth', block:'start'}); }
+      })
+    })
+  </script>
+</body>
+</html>
