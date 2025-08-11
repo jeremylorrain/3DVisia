@@ -80,7 +80,33 @@
       .headline{font-size:34px}
       .grid.cols-3,.gallery{grid-template-columns:1fr}
     }
-  </style>
+    /* --- Mobile polish --- */
+  .container{width:min(1100px,92vw);margin-inline:auto;padding:0 14px}
+  img,video{max-width:100%;height:auto}
+  .headline{line-height:1.15}
+  /* Make thumbs adapt to screen height */
+  .thumb img{height:clamp(160px,35vw,220px)}
+  /* Safer modal sizing on phones */
+  .modal-inner{max-height:90vh;overflow:auto}
+  #modalVideo{max-height:70vh}
+  /* Buttons bigger touch target on mobile */
+  .btn{padding:12px 18px}
+
+  @media (max-width: 768px){
+    .hero{grid-template-columns:1fr;gap:18px;padding:28px 0 12px}
+    .headline{font-size:32px}
+    .sub{font-size:16px}
+    .gallery{grid-template-columns:1fr 1fr;gap:12px}
+    .thumb{border-radius:16px}
+    .thumb .cap{bottom:8px;font-size:13px;padding:6px 10px}
+    header .nav{padding:10px 4px}
+  }
+  @media (max-width: 480px){
+    .headline{font-size:28px}
+    .gallery{grid-template-columns:1fr}
+    .thumb img{height:clamp(150px,48vw,200px)}
+  }
+</style>
 </head>
 <body>
   <!-- Header / Nav -->
@@ -125,8 +151,8 @@
         </div>
       </div>
       <div class="card vid-wrap">
-        <video src="assets/hero.mov" controls poster="assets/cover.jpg"></video>
-        <div class="floating">🎬 3DVisia</div>
+        <video src="assets/hero.mp4" controls playsinline preload="metadata" poster="assets/cover.jpg"></video>
+        <div class="floating">🎬 3D Demo — 1 min</div>
       </div>
     </section>
 
