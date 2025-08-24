@@ -259,13 +259,13 @@
       <h2>Contact</h2>
       <div class="card" style="padding:20px;">
         <form id="contact-form" action="https://formsubmit.co/ajax/jeremylorrain45@yahoo.fr" method="POST">
-          <input type="hidden" name="_subject" value="Nouveau message — 3DVisia">
+          <input type="hidden" name="_subject" value="New message — 3DVisia">
           <input type="hidden" name="_template" value="table">
           <input type="hidden" name="_captcha" value="false">
-          <input name="Nom" placeholder="Nom / Société" required>
+          <input name="Name" placeholder="Name / Company" required>
           <input type="email" name="Email" placeholder="Email" required>
-          <input name="Téléphone" placeholder="Téléphone (optionnel)">
-          <textarea name="Message" placeholder="Parlez-moi de votre projet (type de bien, surface, délai)"></textarea>
+          <input name="Phone" placeholder="Phone (optional)">
+          <textarea name="Message" placeholder="Tell me about your project (type of property, surface, deadline)"></textarea>
           <button class="btn" type="submit">To send</button>
           <div id="form-status" role="status" aria-live="polite"></div>
         </form>
@@ -280,7 +280,7 @@
   if(form){
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
-      status.textContent = 'Envoi en cours…';
+      status.textContent = 'Sending in progress...';
       const data = new FormData(form);
       try {
         const res = await fetch(form.action, { method:'POST', body:data, headers:{ 'Accept':'application/json' } });
