@@ -25,4 +25,195 @@
               <stop offset="100%" stop-color="#6ee7ff"/>
             </linearGradient>
           </defs>
-          <path d="M32 4 58 16 32 28 6 16 32 4Z" stroke="url(#g)" stroke-width
+          <path d="M32 4 58 16 32 28 6 16 32 4Z" stroke="url(#g)" stroke-width="2.5"/>
+          <path d="M6 16v32l26 12V28L6 16Z" stroke="url(#g)" stroke-width="2.5"/>
+          <path d="M58 16v32L32 60V28l26-12Z" stroke="url(#g)" stroke-width="2.5"/>
+        </svg>
+        <div class="brand-name">3DVisia</div>
+      </div>
+      <nav class="lang">
+        <a href="#services">Services</a>
+        <a href="#process">Process</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#contact" class="btn secondary">Contact</a>
+        <a href="index.html">FR</a>
+        <span style="opacity:.6">|</span>
+        <a href="index-en.html">EN</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="container hero">
+      <div>
+        <span class="badge">🎯 Sell off-plan faster</span>
+        <h1 class="headline">Turn your real estate projects into <span style="background:linear-gradient(90deg,var(--brand),var(--brand-2));-webkit-background-clip:text;background-clip:text;color:transparent">immersive 3D experiences</span></h1>
+        <p class="sub">Realistic 3D renderings, animated videos and virtual tours to speed up the buying decision and showcase your properties from the plan stage. Delivery in 48–72h. Free demo.</p>
+        <div class="hero-cta">
+          <a href="#contact" class="btn">Request a free video</a>
+          <a href="#portfolio" class="btn ghost">See examples</a>
+        </div>
+      </div>
+      <div class="card vid-wrap">
+        <video src="assets/hero.mov" controls poster="assets/cover.jpg"></video>
+        <div class="floating">🎬 3DVisia</div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="section container">
+      <h2>Services</h2>
+      <div class="grid cols-3" style="margin-top:14px">
+        <div class="service"><h3>Realistic 3D renderings</h3><p class="muted">Interiors & exteriors, detailed textures and lighting for instant projection.</p></div>
+        <div class="service"><h3>Animated videos</h3><p class="muted">Smooth walkthroughs, logo & music, formats for websites, social media & sales screens.</p></div>
+        <div class="service"><h3>Digital home staging</h3><p class="muted">Photorealistic before/after for empty or renovated properties.</p></div>
+        <div class="service"><h3>360° virtual tours</h3><p class="muted">Mobile & VR compatible for maximum immersion.</p></div>
+        <div class="service"><h3>Multilingual pack</h3><p class="muted">FR/EN and other languages on request for your international markets.</p></div>
+        <div class="service"><h3>Express delivery</h3><p class="muted">48–72h depending on brief and complexity, revisions included.</p></div>
+      </div>
+    </section>
+
+    <!-- Process -->
+    <section id="process" class="section container">
+      <h2>Simple & fast process</h2>
+      <div class="process" style="margin-top:14px">
+        <div class="step"><strong>1. Brief</strong><br><span class="muted">Plans, images, desired style.</span></div>
+        <div class="step"><strong>2. Preview</strong><br><span class="muted">Mock-up & proposed angles.</span></div>
+        <div class="step"><strong>3. Production</strong><br><span class="muted">HD renderings & video editing.</span></div>
+        <div class="step"><strong>4. Delivery</strong><br><span class="muted">Export for web & social media, revisions included.</span></div>
+      </div>
+    </section>
+
+    <!-- Offer -->
+    <section class="section container">
+      <div class="offer">
+        <h2 style="margin-top:0">🎁 Discovery offer — free demo</h2>
+        <p class="muted">Send a plan or visuals: I will create a free video snippet to show you the impact. No commitment.</p>
+        <div class="cta-row">
+          <a href="#contact" class="btn">Send my project</a>
+          <a href="#portfolio" class="btn ghost">See examples</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="tarifs" class="section container">
+      <h2>Pricing</h2>
+      <div class="grid cols-3" style="margin-top:14px">
+        <div class="service">
+          <h3>Essential</h3>
+          <ul>
+            <li>3D Rendering: 1 view (€200)</li>
+            <li>Immersive 3D Video: 30 sec (€500)</li>
+            <li>360° Virtual Tour: 3 viewpoints (€300)</li>
+          </ul>
+          <a href="#contact" class="btn secondary">Choose Essential</a>
+        </div>
+        <div class="service">
+          <h3>Premium</h3>
+          <ul>
+            <li>3D Rendering: 3 views, unlimited revisions (€500)</li>
+            <li>Immersive 3D Video: 60 sec, advanced transitions, social formats (€900)</li>
+            <li>360° Virtual Tour: 6 viewpoints, mobile & VR (€600)</li>
+          </ul>
+          <a href="#contact" class="btn secondary">Choose Premium</a>
+        </div>
+        <div class="service">
+          <h3>Prestige</h3>
+          <ul>
+            <li>3D Rendering: 5 views, 4K, advanced post-production (€800)</li>
+            <li>Immersive 3D Video: 90 sec, storyboard, 4K (€1 500)</li>
+            <li>360° Virtual Tour: 10 viewpoints, custom interface (€1 000)</li>
+          </ul>
+          <a href="#contact" class="btn secondary">Choose Prestige</a>
+        </div>
+      </div>
+      <h3>Options</h3>
+      <ul>
+        <li>Multilingual: +€50</li>
+        <li>Express (24h): +30%</li>
+        <li>Marketing (thumbnails & snippets): +€80</li>
+      </ul>
+    </section>
+
+    <!-- Portfolio / Gallery -->
+    <section id="portfolio" class="section container">
+      <h2>Sample works</h2>
+      <p class="muted" style="margin:6px 0 16px">Click on a thumbnail to play the video.</p>
+      <div class="gallery" id="gallery"></div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section">
+      <div class="container" style="max-width:720px; margin:auto;">
+        <h2>Contact</h2>
+        <div class="card" style="padding:20px;">
+          <form id="contact-form" action="https://formsubmit.co/ajax/jeremylorrain45@yahoo.fr" method="POST">
+            <input type="hidden" name="_subject" value="New message — 3DVisia">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_captcha" value="false">
+            <input name="Name" placeholder="Name / Company" required>
+            <input type="email" name="Email" placeholder="Email" required>
+            <input name="Phone" placeholder="Phone (optional)">
+            <textarea name="Message" placeholder="Tell me about your project (property type, size, timeline)"></textarea>
+            <button class="btn" type="submit">Send</button>
+            <div id="form-status" role="status" aria-live="polite"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal Video Player -->
+  <div class="modal" id="videoModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-inner">
+      <div class="modal-head">
+        <h3 id="modalTitle">Playing</h3>
+        <button class="close" id="closeModal">Close</button>
+      </div>
+      <video id="modalVideo" controls playsinline></video>
+    </div>
+  </div>
+
+  <script>
+    const items = [
+      { title: 'CORAL REEF — Mauritius', thumb: 'assets/sample-4.jpeg', src: 'assets/sample-4.mp4' },
+      { title: 'BAY VIEW VILLAGE — Montenegro', thumb: 'assets/sample-5.jpg', src: 'assets/sample-5.mp4' },
+      { title: 'OPEN SEA TREBESIN — Montenegro', thumb: 'assets/sample-6.jpg', src: 'assets/sample-6.mp4' }
+    ];
+
+    const gallery = document.getElementById('gallery');
+    const makeThumb = (item) => {
+      const btn = document.createElement('button');
+      btn.className = 'thumb';
+      btn.innerHTML = `<img src="${item.thumb}" alt="${item.title}"><span class="cap">${item.title}</span>`;
+      btn.addEventListener('click', ()=> openModal(item));
+      return btn;
+    };
+    items.forEach(it => gallery.appendChild(makeThumb(it)));
+
+    const modal = document.getElementById('videoModal');
+    const modalVideo = document.getElementById('modalVideo');
+    const modalTitle = document.getElementById('modalTitle');
+    const closeBtn = document.getElementById('closeModal');
+
+    function openModal(item){
+      modal.classList.add('show');
+      modalVideo.src = item.src;
+      modalVideo.currentTime = 0;
+      modalVideo.play().catch(()=>{});
+      modalTitle.textContent = item.title;
+    }
+    function closeModal(){
+      modal.classList.remove('show');
+      modalVideo.pause();
+      modalVideo.removeAttribute('src');
+      modalVideo.load();
+    }
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e)=>{ if(e.target === modal) closeModal(); });
+    document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape' && modal.classList.contains('show')) closeModal(); });
+  </script>
+</body>
+</html>
