@@ -4,12 +4,72 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>3DVisia — Immersive 3D Real Estate Creation</title>
-  <meta name="description" content="Realistic 3D renderings, immersive videos and virtual tours for developers and real estate agencies. Delivery in 48–72h. Free demo." />
+  <meta name="description" content="Realistic 3D renderings, immersive videos and virtual tours for developers and real estate agencies. Delivery 48–72h. Free demo." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
   <style>
-    /* (les mêmes styles que la version FR, inchangés) */
+    :root{--bg:#0c0f14;--panel:#11161f;--card:#141a25;--text:#dfe6f3;--muted:#99a7bd;--brand:#3aa8ff;--brand-2:#6ee7ff;--shadow:0 10px 30px rgba(0,0,0,.40);--radius:18px}
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:'Inter',system-ui,Segoe UI,Roboto,Arial,sans-serif}
+    a{color:var(--brand);text-decoration:none}
+    .container{width:min(1100px,92vw);margin-inline:auto}
+    header{position:sticky;top:0;background:linear-gradient(180deg,rgba(12,15,20,.9),rgba(12,15,20,.6));backdrop-filter:saturate(140%) blur(10px);z-index:50;border-bottom:1px solid rgba(255,255,255,.06)}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 4px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand svg{width:34px;height:34px}
+    .brand-name{font-weight:800;letter-spacing:.3px}
+    .nav a{margin-left:18px;color:#cfe3ff}
+    .btn{display:inline-flex;align-items:center;gap:10px;border:none;border-radius:999px;padding:12px 18px;font-weight:700;letter-spacing:.2px;cursor:pointer;background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#00131f;box-shadow:0 6px 18px rgba(80,190,255,.35)}
+    .btn.ghost{background:transparent;color:var(--text);border:1px solid rgba(255,255,255,.12)}
+    .btn.secondary{background:#1e2635;color:#d7e6ff;border:1px solid rgba(255,255,255,.08)}
+    .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:center;padding:48px 0 26px}
+    .badge{display:inline-flex;align-items:center;gap:8px;background:#0f1622;border:1px solid rgba(255,255,255,.08);padding:8px 12px;border-radius:999px;color:#a9c8ff;font-weight:600}
+    .headline{font-size:44px;line-height:1.1;margin:14px 0 10px;letter-spacing:.2px}
+    .sub{color:var(--muted);font-size:18px}
+    .hero-cta{display:flex;gap:12px;margin-top:18px;flex-wrap:wrap}
+    .card{background:linear-gradient(180deg,var(--panel),var(--card));border:1px solid rgba(255,255,255,.06);border-radius:var(--radius);box-shadow:var(--shadow)}
+    .vid-wrap{position:relative;overflow:hidden;border-radius:16px}
+    .vid-wrap video{display:block;width:100%;height:auto}
+    .floating{position:absolute;bottom:14px;left:14px;background:rgba(0,0,0,.55);backdrop-filter:blur(6px);padding:8px 12px;border-radius:10px;border:1px solid rgba(255,255,255,.15);font-size:12px}
+    .section{padding:52px 0}
+    .grid{display:grid;gap:18px}
+    .grid.cols-3{grid-template-columns:repeat(3,1fr)}
+    .grid.cols-2{grid-template-columns:repeat(2,1fr)}
+    .service{padding:22px;border-radius:16px;background:linear-gradient(180deg,#101521,#0b0f17);border:1px solid rgba(255,255,255,.06)}
+    .service h3{margin:10px 0 6px}
+    .muted{color:var(--muted)}
+    .process{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+    .step{padding:18px;border-radius:14px;border:1px dashed rgba(255,255,255,.16);background:#0e141f}
+    .offer{padding:26px;border-radius:18px;background:linear-gradient(135deg,#0e1624,#0b1320 70%);border:1px solid rgba(60,180,255,.25)}
+    .cta-row{display:flex;gap:12px;flex-wrap:wrap}
+
+    /* Gallery */
+    .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .thumb{position:relative;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,.08);cursor:pointer}
+    .thumb img{width:100%;height:210px;object-fit:cover;display:block;filter:saturate(1.05)}
+    .thumb .cap{position:absolute;inset:auto 8px 8px 8px;background:rgba(0,0,0,.5);padding:6px 8px;border-radius:8px;font-size:12px}
+
+    /* Modal */
+    .modal{position:fixed;inset:0;background:rgba(0,0,0,.7);display:none;align-items:center;justify-content:center;padding:20px;z-index:1000}
+    .modal.show{display:flex}
+    .modal-inner{width:min(980px,96vw);background:#0b101a;border:1px solid rgba(255,255,255,.12);border-radius:14px;box-shadow:0 20px 60px rgba(0,0,0,.5);padding:12px}
+    .modal-head{display:flex;justify-content:space-between;align-items:center;padding:2px 6px 8px 6px}
+    .modal-head h3{margin:8px 0;font-size:16px;color:#cfe3ff}
+    .close{background:transparent;border:1px solid rgba(255,255,255,.2);color:#cfe3ff;border-radius:999px;padding:6px 10px;cursor:pointer}
+    video{width:100%;height:auto;border-radius:10px;background:#000}
+
+    @media (max-width: 980px){
+      .hero{grid-template-columns:1fr}
+      .grid.cols-3{grid-template-columns:1fr 1fr}
+      .grid.cols-2{grid-template-columns:1fr}
+      .process{grid-template-columns:1fr 1fr}
+      .gallery{grid-template-columns:1fr 1fr}
+    }
+    @media (max-width: 620px){
+      .headline{font-size:34px}
+      .grid.cols-3,.gallery{grid-template-columns:1fr}
+    }
   </style>
 </head>
 <body>
@@ -17,7 +77,6 @@
   <header>
     <div class="container nav">
       <div class="brand">
-        <!-- Logo -->
         <svg class="logo-cube" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <defs>
             <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
@@ -37,8 +96,9 @@
         <a href="#portfolio">Portfolio</a>
         <a href="#contact" class="btn secondary">Contact</a>
         <a href="index.html">FR</a>
-        <span style="opacity:.6">|</span>
-        <a href="index-en.html">EN</a>
+  <span style="opacity:.6">|</span>
+  <a href="index-en.html">EN</a>
+</nav>
       </nav>
     </div>
   </header>
@@ -47,9 +107,9 @@
     <!-- Hero -->
     <section class="container hero">
       <div>
-        <span class="badge">🎯 Sell off-plan faster</span>
-        <h1 class="headline">Turn your real estate projects into <span style="background:linear-gradient(90deg,var(--brand),var(--brand-2));-webkit-background-clip:text;background-clip:text;color:transparent">immersive 3D experiences</span></h1>
-        <p class="sub">Realistic 3D renderings, animated videos and virtual tours to speed up the buying decision and showcase your properties from the plan stage. Delivery in 48–72h. Free demo.</p>
+        <span class="badge">🎯Sell on plan faster</span>
+        <h1 class="headline">Transform your real estate projects into <span style="background:linear-gradient(90deg,var(--brand),var(--brand-2));-webkit-background-clip:text;background-clip:text;color:transparent">Immersive 3D experiences</span></h1>
+        <p class="sub">Realistic 3D renderings, animated videos and virtual visits to speed up the purchase decision and enhance your properties from the plan phase. Free demo.</p>
         <div class="hero-cta">
           <a href="#contact" class="btn">Request a free video</a>
           <a href="#portfolio" class="btn ghost">See examples</a>
@@ -65,12 +125,12 @@
     <section id="services" class="section container">
       <h2>Services</h2>
       <div class="grid cols-3" style="margin-top:14px">
-        <div class="service"><h3>Realistic 3D renderings</h3><p class="muted">Interiors & exteriors, detailed textures and lighting for instant projection.</p></div>
-        <div class="service"><h3>Animated videos</h3><p class="muted">Smooth walkthroughs, logo & music, formats for websites, social media & sales screens.</p></div>
-        <div class="service"><h3>Digital home staging</h3><p class="muted">Photorealistic before/after for empty or renovated properties.</p></div>
+        <div class="service"><h3>Realistic 3D renderings</h3><p class="muted">Interiors & exteriors, textures and neat lights to project immediately.</p></div>
+        <div class="service"><h3>Animated videos</h3><p class="muted">Fluid course, logo & music, site formats, networks & sales screens.</p></div>
+        <div class="service"><h3>Home staging digital</h3><p class="muted">Photorealistic before/after for empty properties or under renovation.</p></div>
         <div class="service"><h3>360° virtual tours</h3><p class="muted">Mobile & VR compatible for maximum immersion.</p></div>
-        <div class="service"><h3>Multilingual pack</h3><p class="muted">FR/EN and other languages on request for your international markets.</p></div>
-        <div class="service"><h3>Express delivery</h3><p class="muted">48–72h depending on brief and complexity, revisions included.</p></div>
+        <div class="service"><h3>Pack multilingue</h3><p class="muted">FR/EN and other languages on request for your international markets.</p></div>
+        <div class="service"><h3>Express delivery</h3><p class="muted">48–72h according to brief and complexity, feedback included.</p></div>
       </div>
     </section>
 
@@ -79,9 +139,9 @@
       <h2>Simple & fast process</h2>
       <div class="process" style="margin-top:14px">
         <div class="step"><strong>1. Brief</strong><br><span class="muted">Plans, images, desired style.</span></div>
-        <div class="step"><strong>2. Preview</strong><br><span class="muted">Mock-up & proposed angles.</span></div>
+        <div class="step"><strong>2. Preview</strong><br><span class="muted">Model & angles offered.</span></div>
         <div class="step"><strong>3. Production</strong><br><span class="muted">HD renderings & video editing.</span></div>
-        <div class="step"><strong>4. Delivery</strong><br><span class="muted">Export for web & social media, revisions included.</span></div>
+        <div class="step"><strong>4. Delivery</strong><br><span class="muted">Web export & networks, returns included.</span></div>
       </div>
     </section>
 
@@ -89,100 +149,180 @@
     <section class="section container">
       <div class="offer">
         <h2 style="margin-top:0">🎁 Discovery offer — free demo</h2>
-        <p class="muted">Send a plan or visuals: I will create a free video snippet to show you the impact. No commitment.</p>
+        <p class="muted">Send a plan or visuals: I make a free video excerpt to show you the impact. Without commitment.</p>
         <div class="cta-row">
           <a href="#contact" class="btn">Send my project</a>
           <a href="#portfolio" class="btn ghost">See examples</a>
         </div>
       </div>
     </section>
-
-    <!-- Pricing -->
-    <section id="tarifs" class="section container">
-      <h2>Pricing</h2>
-      <div class="grid cols-3" style="margin-top:14px">
-        <div class="service">
-          <h3>Essential</h3>
-          <ul>
-            <li>3D Rendering: 1 view (€200)</li>
-            <li>Immersive 3D Video: 30 sec (€500)</li>
-            <li>360° Virtual Tour: 3 viewpoints (€300)</li>
-          </ul>
-          <a href="#contact" class="btn secondary">Choose Essential</a>
-        </div>
-        <div class="service">
-          <h3>Premium</h3>
-          <ul>
-            <li>3D Rendering: 3 views, unlimited revisions (€500)</li>
-            <li>Immersive 3D Video: 60 sec, advanced transitions, social formats (€900)</li>
-            <li>360° Virtual Tour: 6 viewpoints, mobile & VR (€600)</li>
-          </ul>
-          <a href="#contact" class="btn secondary">Choose Premium</a>
-        </div>
-        <div class="service">
-          <h3>Prestige</h3>
-          <ul>
-            <li>3D Rendering: 5 views, 4K, advanced post-production (€800)</li>
-            <li>Immersive 3D Video: 90 sec, storyboard, 4K (€1 500)</li>
-            <li>360° Virtual Tour: 10 viewpoints, custom interface (€1 000)</li>
-          </ul>
-          <a href="#contact" class="btn secondary">Choose Prestige</a>
-        </div>
-      </div>
-      <h3>Options</h3>
+    <!-- Tarifs -->
+<section id="tarifs" class="section container">
+  <h2>Rates</h2>
+    <div class="grid cols-3" style="margin-top:14px">
+    <div class="service">
+      <h3>Essential</h3>
       <ul>
-        <li>Multilingual: +€50</li>
-        <li>Express (24h): +30%</li>
-        <li>Marketing (thumbnails & snippets): +€80</li>
+        <li>3D rendering: 1 view (€200)</li>
+        <li>3D immersive video: 30 sec (€500)</li>
+        <li>360° virtual tour: 3 viewpoints (€300)</li>
       </ul>
-    </section>
+      <a href="#contact" class="btn secondary">Choose Essential</a>
+    </div>
+    <div class="service">
+      <h3>Premium</h3>
+      <ul>
+        <li>3D rendering: 3 views, unlimited retouching (€500)</li>
+        <li>3D immersive video: 60 sec, advanced transitions, network formats (€900)</li>
+        <li>360° virtual tour: 6 points of view, mobile & VR (€600)</li>
+      </ul>
+      <a href="#contact" class="btn secondary">Choose Premium</a>
+    </div>
+    <div class="service">
+      <h3>Prestige</h3>
+      <ul>
+        <li>3D rendering: 5 views, 4K, advanced post-production (€800)</li>
+        <li>3D immersive video: 90 sec, storyboard, 4K (€1,500)</li>
+        <li>360° virtual tour: 10 points of view, personalized interface (€1,000)</li>
+      </ul>
+      <a href="#contact" class="btn secondary">Choose Prestige</a>
+    </div>
+  </div>
+  <h3>Options</h3>
+  <ul>
+    <li>Multilingue : +50 €</li>
+    <li>Express (24h) : +30 %</li>
+    <li>Marketing (Miniatures & extracts) : +80 €</li>
+</  </div>
+</section>
+
 
     <!-- Portfolio / Gallery -->
     <section id="portfolio" class="section container">
-      <h2>Sample works</h2>
+      <h2>Examples of achievements</h2>
       <p class="muted" style="margin:6px 0 16px">Click on a thumbnail to play the video.</p>
       <div class="gallery" id="gallery"></div>
     </section>
 
-    <!-- Contact -->
-    <section id="contact" class="section">
-      <div class="container" style="max-width:720px; margin:auto;">
-        <h2>Contact</h2>
-        <div class="card" style="padding:20px;">
-          <form id="contact-form" action="https://formsubmit.co/ajax/jeremylorrain45@yahoo.fr" method="POST">
-            <input type="hidden" name="_subject" value="New message — 3DVisia">
-            <input type="hidden" name="_template" value="table">
-            <input type="hidden" name="_captcha" value="false">
-            <input name="Name" placeholder="Name / Company" required>
-            <input type="email" name="Email" placeholder="Email" required>
-            <input name="Phone" placeholder="Phone (optional)">
-            <textarea name="Message" placeholder="Tell me about your project (property type, size, timeline)"></textarea>
-            <button class="btn" type="submit">Send</button>
-            <div id="form-status" role="status" aria-live="polite"></div>
-          </form>
-        </div>
+    <!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>3DVisia — Immersive 3D Real Estate Creation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  body { font-family:'Inter',sans-serif; background:#0c0f14; color:#dfe6f3; margin:0; }
+  .section { padding:52px 0; }
+
+  /* Galerie avec effet bulle et légendes améliorées */
+  .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .thumb{
+    position:relative;overflow:hidden;border-radius:20px;cursor:pointer;
+    background:linear-gradient(180deg,#11161f,#141a25);
+    border:1px solid rgba(255,255,255,.14);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 12px 28px rgba(0,0,0,.45);
+    transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease;
+  }
+  .thumb img{width:100%;height:210px;object-fit:cover;display:block;filter:saturate(1.05)}
+  .thumb:hover{
+    transform:translateY(-2px);
+    border-color:rgba(110,231,255,.35);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.10),0 16px 34px rgba(0,0,0,.55),0 0 0 6px rgba(58,168,255,.12);
+  }
+  .thumb .cap{
+    position:absolute;left:50%;bottom:12px;transform:translateX(-50%);
+    padding:8px 12px;border-radius:999px;font-size:14px;font-weight:600;letter-spacing:.2px;color:#dfe6f3;
+    background:linear-gradient(180deg,rgba(6,18,32,.55),rgba(9,22,36,.75));
+    border:1px solid rgba(110,231,255,.35);
+    backdrop-filter:blur(8px);
+    box-shadow:0 6px 18px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.08);
+    text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  }
+
+  /* Contact */
+  .card { background:linear-gradient(180deg,#11161f,#141a25); border-radius:18px; border:1px solid rgba(255,255,255,.06); box-shadow:0 10px 30px rgba(0,0,0,.4); }
+  input, textarea { width:100%; padding:10px; margin-bottom:12px; border-radius:10px; border:1px solid rgba(255,255,255,.15); background:#0e1420; color:#fff; font-size:14px; }
+  textarea { min-height:90px; resize:vertical; }
+  form { display:flex; flex-direction:column; gap:10px; }
+  button.btn { align-self:flex-start; padding:10px 20px; border:none; border-radius:999px; background:linear-gradient(135deg,#3aa8ff,#6ee7ff); color:#00131f; font-weight:700; cursor:pointer; }
+  #form-status { font-size:13px; color:#99a7bd; margin-top:4px; }
+</style>
+</head>
+<body>
+
+  <!-- Contact -->
+  <section id="contact" class="section">
+    <div class="container" style="max-width:720px; margin:auto;">
+      <h2>Contact</h2>
+      <div class="card" style="padding:20px;">
+        <form id="contact-form" action="https://formsubmit.co/ajax/jeremylorrain45@yahoo.fr" method="POST">
+          <input type="hidden" name="_subject" value="Nouveau message — 3DVisia">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
+          <input name="Nom" placeholder="Nom / Société" required>
+          <input type="email" name="Email" placeholder="Email" required>
+          <input name="Téléphone" placeholder="Téléphone (optionnel)">
+          <textarea name="Message" placeholder="Parlez-moi de votre projet (type de bien, surface, délai)"></textarea>
+          <button class="btn" type="submit">To send</button>
+          <div id="form-status" role="status" aria-live="polite"></div>
+        </form>
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
+
+<script>
+(() => {
+  const form = document.getElementById('contact-form');
+  const status = document.getElementById('form-status');
+  if(form){
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      status.textContent = 'Envoi en cours…';
+      const data = new FormData(form);
+      try {
+        const res = await fetch(form.action, { method:'POST', body:data, headers:{ 'Accept':'application/json' } });
+        if(res.ok){
+          form.reset();
+          status.textContent = '';
+          alert('✅ Thank you! Your message has been sent. I will answer you within 24 hours.');
+        } else {
+          alert("❌ Oops, the sending failed. Try again or write me by email/WhatsApp.");
+        }
+      } catch(err){
+        alert("❌ Oops, the sending failed. Try again or write me by email/WhatsApp.");
+      }
+    });
+  }
+})();
+</script>
+</body>
+</html>
+
 
   <!-- Modal Video Player -->
   <div class="modal" id="videoModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
     <div class="modal-inner">
       <div class="modal-head">
-        <h3 id="modalTitle">Playing</h3>
-        <button class="close" id="closeModal">Close</button>
+        <h3 id="modalTitle">Reading</h3>
+        <button class="close" id="closeModal">To close</button>
       </div>
       <video id="modalVideo" controls playsinline></video>
     </div>
   </div>
 
   <script>
+    // ==== Données de la galerie (vos exemples) ====
+    // ➜ Ajoutez/retirez des objets au tableau items
     const items = [
-      { title: 'CORAL REEF — Mauritius', thumb: 'assets/sample-4.jpeg', src: 'assets/sample-4.mp4' },
-      { title: 'BAY VIEW VILLAGE — Montenegro', thumb: 'assets/sample-5.jpg', src: 'assets/sample-5.mp4' },
-      { title: 'OPEN SEA TREBESIN — Montenegro', thumb: 'assets/sample-6.jpg', src: 'assets/sample-6.mp4' }
+      { title: 'CORAL REEF — Île Maurice', thumb: 'assets/sample-4.jpeg', src: 'assets/sample-4.mp4' },
+      { title: 'BAY VIEW VILLAGE — Monténégro', thumb: 'assets/sample-5.jpg', src: 'assets/sample-5.mp4' },
+      { title: 'OPEN SEA TREBESIN — Monténégro', thumb: 'assets/sample-6.jpg', src: 'assets/sample-6.mp4' }
     ];
 
+    // Rendu des vignettes
     const gallery = document.getElementById('gallery');
     const makeThumb = (item) => {
       const btn = document.createElement('button');
@@ -193,6 +333,7 @@
     };
     items.forEach(it => gallery.appendChild(makeThumb(it)));
 
+    // Modal
     const modal = document.getElementById('videoModal');
     const modalVideo = document.getElementById('modalVideo');
     const modalTitle = document.getElementById('modalTitle');
@@ -214,6 +355,7 @@
     closeBtn.addEventListener('click', closeModal);
     modal.addEventListener('click', (e)=>{ if(e.target === modal) closeModal(); });
     document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape' && modal.classList.contains('show')) closeModal(); });
+    
   </script>
 </body>
 </html>
